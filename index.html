@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Minty Games — Unblocked</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <div class="logo">
+      <span class="logo-icon">🌿</span>
+      <span class="logo-text">Minty<em>Games</em></span>
+    </div>
+    <input type="text" id="search-input" class="search-input" placeholder="Search games…" autocomplete="off"/>
+  </div>
+</header>
+
+<section class="hero">
+  <p class="hero-eyebrow">100% unblocked · plays in browser · no installs</p>
+  <h1 class="hero-title">Play.<br/>No blocks.<br/>No installs.</h1>
+  <p class="hero-sub"><span id="game-count"></span> games — all self-hosted, always fresh.</p>
+</section>
+
+<nav class="filter-bar" id="filter-bar">
+  <button class="filter-btn active" data-category="All">All</button>
+</nav>
+
+<div class="results-bar" id="results-bar"></div>
+<main class="game-grid" id="game-grid"></main>
+
+<div class="empty-state hidden" id="empty-state">
+  <span class="empty-icon">🕹️</span>
+  <p>No games match "<span id="empty-query"></span>"</p>
+</div>
+
+<!-- MODAL -->
+<div class="modal-overlay hidden" id="modal-overlay">
+  <div class="modal" id="modal">
+    <div class="modal-header">
+      <div class="modal-title-group">
+        <span class="modal-emoji" id="modal-emoji"></span>
+        <div>
+          <h2 class="modal-title" id="modal-title"></h2>
+          <span class="modal-badge" id="modal-category"></span>
+        </div>
+      </div>
+      <div class="modal-actions">
+        <button class="modal-icon-btn" id="modal-fullscreen" title="Fullscreen">⛶</button>
+        <button class="modal-icon-btn modal-close" id="modal-close" aria-label="Close">✕</button>
+      </div>
+    </div>
+
+    <div class="iframe-wrapper" id="iframe-wrapper">
+      <!-- Loading state -->
+      <div class="game-loading" id="game-loading">
+        <div class="loading-spinner"></div>
+        <p id="loading-text">Loading game…</p>
+      </div>
+
+      <!-- Game iframe (hidden until loaded) -->
+      <iframe
+        id="game-iframe"
+        class="hidden"
+        src=""
+        title="Game"
+        allowfullscreen
+        sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-pointer-lock allow-modals"
+      ></iframe>
+
+      <!-- Fallback if fetch fails -->
+      <div class="iframe-blocker hidden" id="iframe-blocker">
+        <span>🚫</span>
+        <p>Couldn't load this game.</p>
+        <a id="iframe-external-link" href="#" target="_blank" rel="noopener" class="open-external-btn">
+          Open directly ↗
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
